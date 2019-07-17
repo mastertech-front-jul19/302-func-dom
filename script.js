@@ -1,17 +1,39 @@
-function fazerTabuda () {
-    let valor = Number(prompt('Diga o valor da tabuada:'));
-    let inicio = Number(prompt('Diga o primeiro valor da tabuada a ser mostrado:'));
-    let final = Number(prompt('Diga o último valor da tabuada a ser mostrado:'));
-    let i = inicio;
+/*
+Jogo de Adivinhação
+- O sistema sorteia um número aleatório de 0 a 50;
+- O sistema pede um palpite para o usuário;
+    - Se o usuário acertar, ele venceu;
+    - Se não:
+        - O sistema avisa se o palpite do usuário é maior ou menor que o número sorteado;
+- A cada erro, o usuário perde 1 vida. Ele tem dez vidas para acertar o número;
+*/
 
-    while (i <= final) {
-        console.log(`${valor} X ${i} = ${valor * i}`);
-        i++;
+let numeroSorteado = 0;
+
+function rodarJogo() {
+    let palpite = Number(prompt('Adivinhe o número sorteado entre 0 e 50.'));
+
+    if (palpite === numeroSorteado) {
+        alert('Parabéns, você ganhou o jogo');
     }
-    //Exercício acabou aqui ^^^^^^
-    if(confirm('Você gostaria de ver uma nova tabuada?')) {
-        fazerTabuda();
+    else {
+        if (palpite > numeroSorteado) {
+            alert('Seu palpite foi maior que o número sorteado. Tente um número mais baixo.');
+        }
+        else {
+            alert('Seu palpite foi menor que o número sorteado. Tente um número mais alto.');
+        }
+        
+        rodarJogo();
     }
+
 }
 
-fazerTabuda();
+function iniciarJogo() {
+    numeroSorteado = aleatorio(0, 50);
+    console.log(numeroSorteado);
+
+    rodarJogo();
+}
+
+iniciarJogo();
