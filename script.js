@@ -1,32 +1,17 @@
-function executarPrograma() {
-    let porcentagem = 0.3;
-    let idade = Number(prompt('Quantos anos você tem?'));
-    let renda = Number(prompt('Qual é sua renda?'));
-    let montante = Number(prompt('Qual o valor do empréstimo?'));
+function fazerTabuda () {
+    let valor = Number(prompt('Diga o valor da tabuada:'));
+    let inicio = Number(prompt('Diga o primeiro valor da tabuada a ser mostrado:'));
+    let final = Number(prompt('Diga o último valor da tabuada a ser mostrado:'));
+    let i = inicio;
 
-    if (idade < 24 || idade > 65) {
-        alert('Reprovado pela idade');
+    while (i <= final) {
+        console.log(`${valor} X ${i} = ${valor * i}`);
+        i++;
     }
-    else if (renda < 1500) {
-        alert('Reprovado pela renda');
-    }
-    else if (montante < 1000 || montante > renda * 10) {
-        alert('Reprovado pelo empréstimo');
-    }
-    else {
-        alert('Aprovado');
-
-        let valorTotal = montante * (1 + porcentagem);
-        let quantidadeParcelas = Number(prompt('O valor total a ser pago é de R$' + valorTotal + '. Em quantas parcelas você gostaria de dividir?'));
-
-        while (isNaN(quantidadeParcelas)) {
-            quantidadeParcelas = Number(prompt(`Nós só aceitamos parcelamentos de 3 a 12 vezes. Em quantas parcelas você gostaria de dividir?`));
-        }
-
-        let valorParcela = valorTotal / quantidadeParcelas;
-
-        alert(`O valor total a ser pago é de R$${valorTotal}, e será pago em ${quantidadeParcelas} de R$${valorParcela.toFixed(2)}`);
+    //Exercício acabou aqui ^^^^^^
+    if(confirm('Você gostaria de ver uma nova tabuada?')) {
+        fazerTabuda();
     }
 }
 
-executarPrograma();
+fazerTabuda();
